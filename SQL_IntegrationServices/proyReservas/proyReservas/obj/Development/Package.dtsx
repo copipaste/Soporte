@@ -1,0 +1,1028 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/29/2023 7:43:58 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-KDAQ9FP"
+  DTS:CreatorName="DESKTOP-KDAQ9FP\aintu"
+  DTS:DTSID="{F3C5B284-280E-4042-9A16-1FB64782A797}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="16394"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{245E4A68-3767-409A-9654-821687F1DD6F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dimPromocion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{747AFD00-D1B6-4DCB-9B96-FD90996EFF60}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dimPromocion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dimPromocion\Destino de ADO NET"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="Destino de ADO NET"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."dimPromocion"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dimPromocion\Destino de ADO NET.Connections[IDbConnection]"
+                  connectionManagerID="{1DAF40AD-6A88-466F-8BE5-C659555E1420}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Hotel_RealtaDM]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dimPromocion\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dimPromocion\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[spof_name]"
+                      cachedDataType="wstr"
+                      cachedLength="55"
+                      cachedName="spof_name"
+                      externalMetadataColumnId="Package\dimPromocion\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[nombrePromocion]"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_name]" />
+                    <inputColumn
+                      refId="Package\dimPromocion\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[spof_id]"
+                      cachedDataType="i4"
+                      cachedName="spof_id"
+                      externalMetadataColumnId="Package\dimPromocion\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[idPromocion]"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[idPromocion]"
+                      dataType="i4"
+                      name="idPromocion" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[nombrePromocion]"
+                      dataType="wstr"
+                      length="55"
+                      name="nombrePromocion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dimPromocion\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\dimPromocion\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimPromocion\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dimPromocion\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dimPromocion\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dimPromocion\Origen de ADO NET"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Origen de ADO NET"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Booking"."special_offers"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dimPromocion\Origen de ADO NET.Connections[IDbConnection]"
+                  connectionManagerID="{CCC73533-D321-404B-976F-5317F6FC1F72}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Hotel_Realta]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_id]"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_id]"
+                      name="spof_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_name]"
+                      length="55"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_name]"
+                      name="spof_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_description]"
+                      length="255"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_description]"
+                      name="spof_description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_type]"
+                      length="5"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_type]"
+                      name="spof_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_discount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_discount]"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_discount]"
+                      name="spof_discount"
+                      precision="20"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_start_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_start_date]"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_start_date]"
+                      name="spof_start_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_end_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_end_date]"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_end_date]"
+                      name="spof_end_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_min_qty]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_min_qty]"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_min_qty]"
+                      name="spof_min_qty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_max_qty]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_max_qty]"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_max_qty]"
+                      name="spof_max_qty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_modified_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_modified_date]"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[spof_modified_date]"
+                      name="spof_modified_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_id]"
+                      dataType="i4"
+                      name="spof_id" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_name]"
+                      dataType="wstr"
+                      length="55"
+                      name="spof_name" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="spof_description" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_type]"
+                      dataType="wstr"
+                      length="5"
+                      name="spof_type" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_discount]"
+                      dataType="numeric"
+                      name="spof_discount"
+                      precision="20"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_start_date]"
+                      dataType="dbTimeStamp"
+                      name="spof_start_date" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_end_date]"
+                      dataType="dbTimeStamp"
+                      name="spof_end_date" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_min_qty]"
+                      dataType="i4"
+                      name="spof_min_qty" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_max_qty]"
+                      dataType="i4"
+                      name="spof_max_qty" />
+                    <externalMetadataColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[spof_modified_date]"
+                      dataType="dbTimeStamp"
+                      name="spof_modified_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_id]"
+                      dataType="i4"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_id]"
+                      name="spof_id" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_name]"
+                      dataType="wstr"
+                      length="55"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_name]"
+                      name="spof_name" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_description]"
+                      name="spof_description" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_type]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_type]"
+                      name="spof_type" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_discount]"
+                      dataType="numeric"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_discount]"
+                      name="spof_discount"
+                      precision="20"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_start_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_start_date]"
+                      name="spof_start_date" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_end_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_end_date]"
+                      name="spof_end_date" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_min_qty]"
+                      dataType="i4"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_min_qty]"
+                      name="spof_min_qty" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_max_qty]"
+                      dataType="i4"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_max_qty]"
+                      name="spof_max_qty" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_modified_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[spof_modified_date]"
+                      name="spof_modified_date" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dimPromocion.Paths[Salida de origen de ADO NET]"
+              endId="Package\dimPromocion\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+              name="Salida de origen de ADO NET"
+              startId="Package\dimPromocion\Origen de ADO NET.Outputs[Salida de origen de ADO NET]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\dimReservas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{492E05AF-68CF-426B-A127-A5BB8C384EB1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dimReservas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\dimSucursal"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F99218A1-3DBF-48AF-BCBF-DFC89BCFFC90}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dimSucursal"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dimSucursal\Destino de ADO NET"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="Destino de ADO NET"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."dimSucursal"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dimSucursal\Destino de ADO NET.Connections[IDbConnection]"
+                  connectionManagerID="{1DAF40AD-6A88-466F-8BE5-C659555E1420}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Hotel_RealtaDM]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dimSucursal\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dimSucursal\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_id"
+                      externalMetadataColumnId="Package\dimSucursal\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[idSucursal]"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_id]" />
+                    <inputColumn
+                      refId="Package\dimSucursal\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[hotel_name]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="hotel_name"
+                      externalMetadataColumnId="Package\dimSucursal\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[nombreHotel]"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[idSucursal]"
+                      dataType="i4"
+                      name="idSucursal" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[nombreHotel]"
+                      dataType="wstr"
+                      length="85"
+                      name="nombreHotel" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dimSucursal\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\dimSucursal\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimSucursal\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dimSucursal\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dimSucursal\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dimSucursal\Origen de ADO NET"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Origen de ADO NET"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Hotel"."Hotels"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dimSucursal\Origen de ADO NET.Connections[IDbConnection]"
+                  connectionManagerID="{CCC73533-D321-404B-976F-5317F6FC1F72}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Hotel_Realta]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_id]"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_id]"
+                      name="hotel_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_name]"
+                      length="85"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_name]"
+                      name="hotel_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_description]"
+                      length="500"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_description]"
+                      name="hotel_description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_status]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_status]"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_status]"
+                      name="hotel_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_reason_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_reason_status]"
+                      length="500"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_reason_status]"
+                      name="hotel_reason_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_rating_star]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_rating_star]"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_rating_star]"
+                      name="hotel_rating_star"
+                      precision="2"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_phonenumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_phonenumber]"
+                      length="25"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_phonenumber]"
+                      name="hotel_phonenumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_modified_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_modified_date]"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_modified_date]"
+                      name="hotel_modified_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_addr_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_addr_id]"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_addr_id]"
+                      name="hotel_addr_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_addr_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_addr_description]"
+                      length="500"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[hotel_addr_description]"
+                      name="hotel_addr_description"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_id]"
+                      dataType="i4"
+                      name="hotel_id" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_name]"
+                      dataType="wstr"
+                      length="85"
+                      name="hotel_name" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_description]"
+                      dataType="wstr"
+                      length="500"
+                      name="hotel_description" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_status]"
+                      dataType="bool"
+                      name="hotel_status" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_reason_status]"
+                      dataType="wstr"
+                      length="500"
+                      name="hotel_reason_status" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_rating_star]"
+                      dataType="numeric"
+                      name="hotel_rating_star"
+                      precision="2"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_phonenumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="hotel_phonenumber" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_modified_date]"
+                      dataType="dbTimeStamp"
+                      name="hotel_modified_date" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_addr_id]"
+                      dataType="i4"
+                      name="hotel_addr_id" />
+                    <externalMetadataColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[hotel_addr_description]"
+                      dataType="wstr"
+                      length="500"
+                      name="hotel_addr_description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_id]"
+                      dataType="i4"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_id]"
+                      name="hotel_id" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_name]"
+                      dataType="wstr"
+                      length="85"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_name]"
+                      name="hotel_name" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_description]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_description]"
+                      name="hotel_description" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_status]"
+                      dataType="bool"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_status]"
+                      name="hotel_status" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_reason_status]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_reason_status]"
+                      name="hotel_reason_status" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_rating_star]"
+                      dataType="numeric"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_rating_star]"
+                      name="hotel_rating_star"
+                      precision="2"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_phonenumber]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_phonenumber]"
+                      name="hotel_phonenumber" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_modified_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_modified_date]"
+                      name="hotel_modified_date" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_addr_id]"
+                      dataType="i4"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_addr_id]"
+                      name="hotel_addr_id" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_addr_description]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[hotel_addr_description]"
+                      name="hotel_addr_description" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dimSucursal.Paths[Salida de origen de ADO NET]"
+              endId="Package\dimSucursal\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+              name="Salida de origen de ADO NET"
+              startId="Package\dimSucursal\Origen de ADO NET.Outputs[Salida de origen de ADO NET]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\dimTiempo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F4BEDF10-D65F-4B15-B27D-2AF552FF11CB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dimTiempo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\dimTipoHabitacion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0B26855F-89E8-45F3-BB5F-BD8123F56F56}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dimTipoHabitacion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="136,42"
+          Id="Package\dimSucursal"
+          TopLeft="461,82" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\dimPromocion"
+          TopLeft="191,240" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\dimTipoHabitacion"
+          TopLeft="449,392" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\dimTiempo"
+          TopLeft="710,236" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\dimReservas"
+          TopLeft="451,239" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dimSucursal">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\dimSucursal\Origen de ADO NET"
+          TopLeft="378,125" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\dimSucursal\Destino de ADO NET"
+          TopLeft="382,347" />
+        <EdgeLayout
+          Id="Package\dimSucursal.Paths[Salida de origen de ADO NET]"
+          TopLeft="467,167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,180"
+              Start="0,0"
+              End="0,172.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,172.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\dimPromocion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\dimPromocion\Origen de ADO NET"
+          TopLeft="415,168" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\dimPromocion\Destino de ADO NET"
+          TopLeft="421,353" />
+        <EdgeLayout
+          Id="Package\dimPromocion.Paths[Salida de origen de ADO NET]"
+          TopLeft="501,210">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8,143"
+              Start="0,0"
+              End="8,135.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,67.5"
+                    Point2="0,71.5"
+                    Point3="4,71.5" />
+                  <mssgle:LineSegment
+                    End="4,71.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4,71.5"
+                    Point2="8,71.5"
+                    Point3="8,75.5" />
+                  <mssgle:LineSegment
+                    End="8,135.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dimSucursal\Origen de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dimSucursal\Destino de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dimPromocion\Origen de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dimPromocion\Destino de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Proy_Hotel_Realta_v1", "Proy_Hotel_Realta_v1\Proy_Hotel_Realta_v1.dtproj", "{255A13D8-1A3F-4983-9F8A-D68A8F572E28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{255A13D8-1A3F-4983-9F8A-D68A8F572E28}.Development|Default.ActiveCfg = Development
+		{255A13D8-1A3F-4983-9F8A-D68A8F572E28}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {450944D4-E09D-4EB3-BA3B-1D107C91A52A}
+	EndGlobalSection
+EndGlobal
