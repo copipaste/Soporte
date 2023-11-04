@@ -6,7 +6,7 @@ VALUES ('1','America');
 
 SET IDENTITY_INSERT Master.Regions OFF; 
 
---Pais 
+-------------------------------------------------------Pais 
 
 SET IDENTITY_INSERT Master.Country ON; 
 
@@ -19,7 +19,7 @@ INSERT INTO Master.country (country_id, country_name, country_region_id) VALUES
 SET IDENTITY_INSERT Master.Country OFF; 
 
 
---Departamentos 
+--------------------------------------------------------Departamentos 
 
 SET IDENTITY_INSERT Master.Provinces ON;   
 
@@ -39,7 +39,8 @@ INSERT INTO Master.provinces (prov_id, prov_name, prov_country_id) VALUES
 
 SET IDENTITY_INSERT Master.Provinces OFF; 
 
-SET IDENTITY_INSERT Master.Address ON; 
+-----------------------------------------------------------------------
+SET IDENTITY_INSERT Master.address ON; 
 
 INSERT INTO Master.address (addr_id, addr_line1, addr_line2, addr_city, addr_postal_code, addr_spatial_location, addr_prov_id) VALUES 
 
@@ -47,16 +48,10 @@ INSERT INTO Master.address (addr_id, addr_line1, addr_line2, addr_city, addr_pos
 
 (2, '3er anillo av san martin ', NULL, 'andres iba�ez', '00001', 'POINT(-8.7158 115.1702)', 4); 
 
-SET IDENTITY_INSERT Master.provinces OFF; 
+SET IDENTITY_INSERT Master.address OFF; 
 
 
-INSERT INTO Hotel.Hotels ( hotel_name, hotel_description, hotel_status, hotel_phonenumber, hotel_addr_id, hotel_addr_description, hotel_modified_date) 
-
-VALUES ('Miraflores Park Hotel', 'Un hotel de lujo ubicado en el distrito de Miraflores, con vistas al oceano Pac�ficoa', 1, '+62 21 29921234',1, 'El Miraflores Park Hotel es un lujoso hotel en Miraflores, Lima, con vistas al mar, habitaciones elegantes y servicios de primera categor�a.t', GETDATE()); 
-
-INSERT INTO Hotel.Hotels ( hotel_name, hotel_description, hotel_status, hotel_phonenumber, hotel_addr_id, hotel_addr_description, hotel_modified_date) 
-
-VALUES ('Hotel Urubor', 'El Hotel los tajibos es un refugio de lujo, con habitaciones elegantes, cocina gourmet y un spa relajante.a',2, '333 22 44 237',2, '3er anillo frente a lan escuela de maestros', GETDATE()); 
+-----------------------------------------------------------------------
 
 
 
@@ -64,27 +59,28 @@ VALUES ('Hotel Urubor', 'El Hotel los tajibos es un refugio de lujo, con habitac
 
 
 
+SET IDENTITY_INSERT Hotel.Hotels ON; 
+
+INSERT INTO Hotel.Hotels (hotel_id, hotel_name, hotel_description, hotel_status, hotel_phonenumber, hotel_addr_id, hotel_addr_description, hotel_modified_date) 
+
+VALUES (1,'Miraflores Park Hotel', 'Un hotel de lujo ubicado en el distrito de Miraflores, con vistas al oceano Pac�ficoa', 1, '+62 21 29921234',1, 'El Miraflores Park Hotel es un lujoso hotel en Miraflores, Lima, con vistas al mar, habitaciones elegantes y servicios de primera categor�a.t', GETDATE()); 
+
+INSERT INTO Hotel.Hotels (hotel_id, hotel_name, hotel_description, hotel_status, hotel_phonenumber, hotel_addr_id, hotel_addr_description, hotel_modified_date) 
+
+VALUES (2,'Hotel Urubor', 'El Hotel los tajibos es un refugio de lujo, con habitaciones elegantes, cocina gourmet y un spa relajante.a',2, '333 22 44 237',2, '3er anillo frente a lan escuela de maestros', GETDATE()); 
+SET IDENTITY_INSERT Hotel.Hotels OFF; 
 
 
-
-
-
-
-
-
-
-
-select * from Hotel.Hotels
-SET IDENTITY_INSERT Area ON 
+-------------------------------------------------------
 
 INSERT INTO Area (area_id, nombre, id_hotel) 
-VALUES (1, 'VIP', '5'), 
- (2, 'GENERAL', '5'),  
-(3, 'VIP', '6'),  
-(4, 'GENERAL', '6');  
-SET IDENTITY_INSERT Area OFF 
+VALUES (1, 'VIP', '1'), 
+ (2, 'GENERAL', '1'),  
+(3, 'VIP', '2'),  
+(4, 'GENERAL', '2');  
 
- 
+
+ -------------------------------------------------------
 
  
 
@@ -98,7 +94,7 @@ VALUES (1, 'Individual Est�ndar', 1, 'Habitaci�n individual con cama individ
 
   (4, 'Familiar', 4, 'Habitaci�n espaciosa con camas para una familia.'); 
 
-
+ -------------------------------------------------------
 
 
 
@@ -135,6 +131,7 @@ VALUES (1, 101, 'LIBRE', 100.00, 120.00, 90.00, 'Vista al mar, cama king size', 
 
  (15, 305, 'LIBRE', 100.00, 140.00, 110.00, 'Vista al mar, cama king size',1, 1);
 
+  -------------------------------------------------------
 
 
 
@@ -146,30 +143,31 @@ VALUES (1, 'Winter Sale', 'Get 20% off your stay when you book a room during the
  
 SET IDENTITY_INSERT Booking.special_offers OFF
 
-
-select * from Booking.special_offers
+ 
+  -------------------------------------------------------
 
 
 
 SET IDENTITY_INSERT Booking.booking_orders ON
-INSERT INTO Booking.booking_orders (boor_id,boor_order_number,     boor_order_date, boor_total_room, boor_total_ammount, boor_down_payment,boor_pay_type,boor_is_paid,boor_type, boor_cardnumber, boor_user_id,boor_hotel_id)
-VALUES (1,'BO#20221127-0001', GETDATE(), 3,500000,200000,'D', 'DP', 'T', '431-2388-93', NULL, 1),
-	   (2,'BO#20221127-0002', GETDATE(), 2,300000,150000,'C', 'DP', 'C', '431-2388-94', NULL, 1),
-	   (3,'BO#20221127-0003', GETDATE(), 1,150000,75000,'D', 'P', 'I', '431-2388-95', NULL, 2),
-	   (4,'BO#20221127-0004', GETDATE(), 4,600000,300000,'C', 'R', 'I', '431-2388-96', NULL, 2);
+INSERT INTO Booking.booking_orders (boor_id,boor_order_number,boor_order_date, boor_total_room, boor_total_ammount, boor_down_payment,boor_pay_type,boor_is_paid,boor_type, boor_cardnumber, boor_user_id,boor_hotel_id)
+VALUES (1,'BO#20221127-0001', '20-01-2022', 2,500000,200000,'D', 'DP', 'T', '431-2388-93', NULL, 1),
+	   (2,'BO#20221127-0002', '21-02-2022', 2,300000,150000,'C', 'DP', 'C', '431-2388-94', NULL, 1),
+	   (3,'BO#20221127-0003', '22-03-2022', 1,150000,75000,'D', 'P', 'I', '431-2388-95', NULL, 2),
+	   (4,'BO#20221127-0004', '23-04-2022', 4,600000,300000,'C', 'R', 'I', '431-2388-96', NULL, 2);
 SET IDENTITY_INSERT Booking.booking_orders OFF
 
 
+
+ -------------------------------------------------------
 
 
 
 SET IDENTITY_INSERT Booking.booking_order_detail ON
 INSERT INTO Booking.booking_order_detail (borde_boor_id, borde_id, borde_checkin, borde_checkout, borde_adults, borde_kids, borde_price, borde_extra, borde_discount, borde_tax, borde_faci_id, habitacion_id)
-VALUES (1, 1,  GETDATE(),  GETDATE(), 2, 0, 200000, 0, 0.1, 0.11, NULL,1),
-	   (1, 2,  GETDATE(),  GETDATE(), 2, 0, 200000, 0, 0.1, 0.11, NULL,2),
-       (2, 3, GETDATE(),  GETDATE(), 2, 1, 200000, 20, 0.2, 0.11, NULL,3),
-       (3, 4,  GETDATE(),  GETDATE(), 2, 2, 100000, 40, 0.2, 0.11, NULL,4),
-       (4, 5,  GETDATE(),  GETDATE(), 3, 2, 50000, 80, 0.2, 0.11, NULL,5);
+VALUES (1, 1,  '21-01-2022',  '23-01-2022', 2, 0, 200000, 0, 0.1, 0.11, NULL,1),
+	   (1, 2,  '21-01-2022',  '23-01-2022', 2, 0, 200000, 0, 0.1, 0.11, NULL,2),
+       (2, 3, '23-02-2022', '25-02-2022', 2, 1, 200000, 20, 0.2, 0.11, NULL,3),
+       (3, 4,  '24-04-2022',  '26-04-2022', 2, 2, 100000, 40, 0.2, 0.11, NULL,4)
 SET IDENTITY_INSERT Booking.booking_order_detail OFF
 -- SELECT*FROM Booking.booking_order_detail
 
@@ -185,11 +183,11 @@ SET IDENTITY_INSERT Booking.special_offer_coupons OFF
 
 
 
-SET IDENTITY_INSERT Booking.special_offer_coupons ON
-INSERT INTO Booking.special_offer_coupons (soco_id, soco_borde_id, soco_spof_id)
-VALUES (5,5, 1);
+--SET IDENTITY_INSERT Booking.special_offer_coupons ON
+--INSERT INTO Booking.special_offer_coupons (soco_id, soco_borde_id, soco_spof_id)
+--VALUES (5,5, 1);
 
-SET IDENTITY_INSERT Booking.special_offer_coupons OFF
+--SET IDENTITY_INSERT Booking.special_offer_coupons OFF
 
 SELECT
 	Booking.booking_order_detail.borde_id,
@@ -198,7 +196,7 @@ SELECT
     Tipo_habitacion.tipo_habitacion_id,   -
 	CASE WHEN boor_status = 'CANCELED' THEN 100 ELSE 0 END AS Porcentaje_Reservas_Canceladas,
 	(boor_id / boor_id) AS Cantidad_de_Reservas,
-    Booking.booking_order_detail.borde_kids * 100.0 / (Booking.booking_order_detail.borde_adults + Booking.booking_order_detail.borde_kids ) AS Porcentaje_de_Ni�os,
+    Booking.booking_order_detail.borde_kids * 100.0 / (Booking.booking_order_detail.borde_adults + Booking.booking_order_detail.borde_kids ) AS Porcentaje_de_Niños,
     Booking.booking_order_detail.borde_adults * 100.0 /(Booking.booking_order_detail.borde_adults + Booking.booking_order_detail.borde_kids ) AS Porcentaje_de_Adultos
 FROM Booking.booking_order_detail
 LEFT JOIN Booking.booking_orders ON Booking.booking_order_detail.borde_boor_id = Booking.booking_orders.boor_id
